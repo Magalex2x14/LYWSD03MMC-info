@@ -3,6 +3,7 @@
 TLSR8251 SoC, LYWSD03MMC [firmware here](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-570829260)
 
 Advertisements payload example ([more](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-568723038), [raw hcidump](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-566897865), [filtered esp32log](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-573395064)):
+
 ```
  Xiaomi  payload   Sensor    packet        MAC                                                  RSSI
   UUID    type?     type        №
@@ -22,11 +23,19 @@ Advertisements payload example ([more](https://github.com/custom-components/sens
  95 FE     30      58 5B 05    95    C7 A8 D9 38 C1 A4    08                                     D7
 ```
 
-Characteristics snapshot:
+## Characteristics snapshot
+
 ![adafruit bluefruit snapshot](characteristics_snapshot.png)
 
-some HTTPS API responses while adding sensor to MiHome app:
+## some HTTPS API responses
+
+while adding sensor to MiHome app:
+
 ```json
 {"mac":"A4:C1:38:AB:DD:EB","model":"miaomiaoce.sensor_ht.t2","token":"12byteshex","did":"blt.3.11usobjecls00"}
 {"did":"blt.3.11usobjecls00","token":"another12bytes","props":[{"type":"prop","key":"bind_key","value":"16bytes"},{"type":"prop","key":"smac","value":"A4:C1:38:AB:DD:EB"}]}
 ```
+
+## MiHome RN-plugin
+
+[miaomiaoce.sensor_ht.t2](https://github.com/wiecosystem/Bluetooth/files/4230785/miaomiaoce.sensor_ht.t2.zip)
