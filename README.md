@@ -2,26 +2,38 @@
 
 TLSR8251 SoC, LYWSD03MMC [firmware here](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-570829260)
 
-Advertisements payload example ([more](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-568723038), [raw hcidump](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-566897865), [filtered esp32log](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-573395064)):
+Advertisements example ([full hcidump](lywsd03mmcdump.txt), [without duplicates](lywsd03mmcdump_noduplicates.txt)):
 
 ```
- Xiaomi  payload   Sensor    packet        MAC                                                  RSSI
-  UUID    type?     type        №
+Dump duration - 30 minutes
 
- 95 FE     30      58 5B 05    89    C7 A8 D9 38 C1 A4    08                                     D5
- 95 FE     58      58 5B 05    8A    C7 A8 D9 38 C1 A4    09 5B 0A 2C 11 00 00 00 BA D7 8D 0F    D1
- 95 FE     30      58 5B 05    8B    C7 A8 D9 38 C1 A4    08                                     C2
- 95 FE     58      58 5B 05    8C    C7 A8 D9 38 C1 A4    D9 2D 5F 24 A5 00 00 00 AE 9A 85 DD    D4
- 95 FE     30      58 5B 05    8D    C7 A8 D9 38 C1 A4    08                                     CF
- 95 FE     58      58 5B 05    8E    C7 A8 D9 38 C1 A4    25 B9 74 08 9D 00 00 00 11 F6 41 5C    CF
- 95 FE     30      58 5B 05    8F    C7 A8 D9 38 C1 A4    08                                     CE
- 95 FE     58      58 5B 05    90    C7 A8 D9 38 C1 A4    2D E3 2D 7B 49 00 00 00 EF 49 D6 2E    CE
- 95 FE     30      58 5B 05    91    C7 A8 D9 38 C1 A4    08                                     CE
- 95 FE     58      58 5B 05    92    C7 A8 D9 38 C1 A4    43 56 E2 51 BB 00 00 00 AC 12 98 1A    D4
- 95 FE     30      58 5B 05    93    C7 A8 D9 38 C1 A4    08                                     D3
- 95 FE     58      58 5B 05    94    C7 A8 D9 38 C1 A4    2F 8B 5F 69 02 00 00 00 2F 91 41 B7    D4
- 95 FE     30      58 5B 05    95    C7 A8 D9 38 C1 A4    08                                     D7
+Temperature: 22.2 to 21.8
+Humidity:     36  to  37
+
+Length  AD   Xiaomi  ?     Device  packet     MAC (LE)        ----------------PAYLOAD--------------  RSSI
+       type   UUID          type     №                                        counter
+
+
+  0F    16   95 FE   30   58 5B 05   BF   6B 87 2F 38 C1 A4   08                                      E3
+  1A    16   95 FE   58   58 5B 05   C0   6B 87 2F 38 C1 A4   63 02 92 E6 37  21 00 00  E5 E9 32 F7   E2
+  0F    16   95 FE   30   58 5B 05   C1   6B 87 2F 38 C1 A4   08                                      E3
+  1A    16   95 FE   58   58 5B 05   C2   6B 87 2F 38 C1 A4   11 B4 AF 05 28  21 00 00  8B C7 85 E9   E3
+  0F    16   95 FE   30   58 5B 05   C3   6B 87 2F 38 C1 A4   08                                      E2
+  1A    16   95 FE   58   58 5B 05   C4   6B 87 2F 38 C1 A4   E3 28 24 BC 5F  21 00 00  BE 1E 41 1A   E2
+  0F    16   95 FE   30   58 5B 05   C5   6B 87 2F 38 C1 A4   08                                      E2
+  1A    16   95 FE   58   58 5B 05   C6   6B 87 2F 38 C1 A4   9C 02 27 6B E4  21 00 00  D5 5E 58 EF   E2
+  0F    16   95 FE   30   58 5B 05   C7   6B 87 2F 38 C1 A4   08                                      DC
+  19    16   95 FE   58   58 5B 05   C8   6B 87 2F 38 C1 A4      8E 95 EE 1F  21 00 00  BF 6A C6 94   DC --??
+  0F    16   95 FE   30   58 5B 05   C9   6B 87 2F 38 C1 A4   08                                      E2
+  1A    16   95 FE   58   58 5B 05   CA   6B 87 2F 38 C1 A4   4F DB 8C 38 30  21 00 00  6E 64 71 E6   DC
+  0F    16   95 FE   30   58 5B 05   CB   6B 87 2F 38 C1 A4   08                                      E2
+  1A    16   95 FE   58   58 5B 05   CC   6B 87 2F 38 C1 A4   D6 02 B0 D8 A4  21 00 00  03 7B C1 69   E2
+  0F    16   95 FE   30   58 5B 05   CD   6B 87 2F 38 C1 A4   08                                      E2
+
+* "counter" starts from 00 00 00 and increases by 1 when "packet №" overflows
 ```
+
+More examples: [more](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-568723038), [raw hcidump](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-566897865), [filtered esp32log](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-573395064)
 
 ## Characteristics snapshot
 
