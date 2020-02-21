@@ -11,7 +11,7 @@ Temperature: 22.2 to 21.8
 Humidity:     36  to  37
 
 len  AD  Xiaomi  ?   Device  packet     MAC (LE)        ----------------PAYLOAD--------------  RSSI
-    type  UUID        type     №                                       counter
+    type  UUID        type     №                                        counter
 
 
 0F   16  95 FE  30  58 5B 05   BF   6B 87 2F 38 C1 A4   08                                      E3
