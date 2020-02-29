@@ -10,7 +10,7 @@ Dump duration - 30 minutes
 Temperature: 22.2 to 21.8
 Humidity:     36  to  37
 
-len  AD  Xiaomi Frame Device packet     MAC (LE)        ----------------PAYLOAD--------------  RSSI
+len  AD  Xiaomi Frame Device  Frame     MAC (LE)        ----------------PAYLOAD--------------  RSSI
     type  UUID   ctrl  type    cnt                                      counter
 
 
