@@ -23,7 +23,7 @@ len  AD  Xiaomi Frame Device  Frame     MAC (LE)        ----------------PAYLOAD-
 0F   16  95 FE  30 58  5B 05   C5   6B 87 2F 38 C1 A4   08                                      E2
 1A   16  95 FE  58 58  5B 05   C6   6B 87 2F 38 C1 A4   9C 02 27 6B E4  21 00 00  D5 5E 58 EF   E2
 0F   16  95 FE  30 58  5B 05   C7   6B 87 2F 38 C1 A4   08                                      DC
-19   16  95 FE  58 58  5B 05   C8   6B 87 2F 38 C1 A4      8E 95 EE 1F  21 00 00  BF 6A C6 94   DC -- apparantly, battery
+19   16  95 FE  58 58  5B 05   C8   6B 87 2F 38 C1 A4      8E 95 EE 1F  21 00 00  BF 6A C6 94   DC -- apparently, battery
 0F   16  95 FE  30 58  5B 05   C9   6B 87 2F 38 C1 A4   08                                      E2
 1A   16  95 FE  58 58  5B 05   CA   6B 87 2F 38 C1 A4   4F DB 8C 38 30  21 00 00  6E 64 71 E6   DC
 0F   16  95 FE  30 58  5B 05   CB   6B 87 2F 38 C1 A4   08                                      E2
