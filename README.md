@@ -89,7 +89,7 @@ b' 0a 10  01  64'
    batt )    100%
 ```
 
-* Probably in the example above (dump 30 minutes) 2-3 measurements for temperature and hunidity and 1 frame with battery info
+* Probably in the example above (dump 30 minutes) 2-3 measurements for temperature and humidity and 1 frame with battery info
 
 ## Characteristics snapshot
 
