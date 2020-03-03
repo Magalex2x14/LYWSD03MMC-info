@@ -1,4 +1,4 @@
-# LYWSD03MMC-info
+# LYWSD03MMC
 
 TLSR8251 SoC, LYWSD03MMC [firmware here](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-570829260)
 
@@ -33,6 +33,8 @@ len  AD  Xiaomi Frame Device  Frame     MAC (LE)        ----------------PAYLOAD-
 *Frame counter + "ext. counter" - 32bit word, ext.cnt starts from 00 00 00 and increases by 1 when frame cnt. overflows
 ```
 
+More examples: [more](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-568723038), [raw hcidump](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-566897865), [filtered esp32log](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-573395064)
+
 ### "08 payload" frame:
 
 ```
@@ -63,7 +65,31 @@ version   auth    binding   registered  mesh   data  capability   MAC        is 
 
 ```
 
-More examples: [more](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-568723038), [raw hcidump](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-566897865), [filtered esp32log](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-573395064)
+### Encryption:
+
+```
+AES 128 CCM (CBC+MAC)
+
+Data: regular xiaomi data object
+Key: "bind_key" or "beaconkey"
+AAD: seems like fixed to 0x11
+MAC: 4 bytes
+nonce: device MAC, device type, frame cnt, ext. cnt
+```
+
+decrypted example:
+
+```shell
+#... 85 75 17 E2 AA  00 00 00  18 B2 A9 DA   E2
+b' 06 10  02  56 01'
+    hum       34,2%
+
+#... AC 84 32 95     00 00 00  0E 58 B5 7F   E3
+b' 0a 10  01  64'
+   batt )    100%
+```
+
+* Probably in the example above (dump 30 minutes) 2-3 measurements for temperature and hunidity and 1 frame with battery info
 
 ## Characteristics snapshot
 
