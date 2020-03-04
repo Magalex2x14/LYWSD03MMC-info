@@ -29,11 +29,39 @@ len  AD  Xiaomi Frame Device  Frame     MAC (LE)        ----------------PAYLOAD-
 0F   16  95 FE  30 58  5B 05   CB   6B 87 2F 38 C1 A4   08                                      E2
 1A   16  95 FE  58 58  5B 05   CC   6B 87 2F 38 C1 A4   D6 02 B0 D8 A4  21 00 00  03 7B C1 69   E2
 0F   16  95 FE  30 58  5B 05   CD   6B 87 2F 38 C1 A4   08                                      E2
+--------------------------
+*"unbinded" device frame:
+                30 58  5b 05   01   6b 87 2f 38 c1 a4   28 01 00
 
 *Frame counter + "ext. counter" - 32bit word, ext.cnt starts from 00 00 00 and increases by 1 when frame cnt. overflows
 ```
 
+After removing the battery, the sensor stops transmitting data (except for the "unbinded" frame),
+but after viewing the sensor state in the MiHome application ("pairing" does not occur),
+transmission continues with the old encryption key.
+
 More examples: [more](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-568723038), [raw hcidump](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-566897865), [filtered esp32log](https://github.com/custom-components/sensor.mitemp_bt/issues/7#issuecomment-573395064)
+
+### "unbinded" frame:
+
+```
+Frame ctrl - 58 30
+
+ 0101      10       0            0       0      0        1         1         0          000
+
+version   auth    binding   registered  mesh   data  capability   MAC        is       reserved
+  (5)     mode   valid.req?     flag    flag   flag     flag      flag    encrypted
+
+
+Capability - 28
+
+  00    1        11          000
+rsrvd  I/O   bondability     not
+       cap.    "combo"       used
+
+IO capability: 00 01
+
+```
 
 ### "08 payload" frame:
 
